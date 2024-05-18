@@ -1,6 +1,7 @@
 import React from "react";
 import MaxWidthWrapper from "./MaxWidthWrapper";
 import Link from "next/link";
+import { ModeToggle } from "./ModeToggle";
 
 const Navbar = () => {
   return (
@@ -10,6 +11,7 @@ const Navbar = () => {
           <Link href="/" className="text-xl font-bold">
             Movie Quest
           </Link>
+          <ModeToggle />
         </div>
       </MaxWidthWrapper>
     </nav>

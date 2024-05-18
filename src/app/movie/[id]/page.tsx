@@ -13,7 +13,6 @@ async function getData(id: string): Promise<Movie[]> {
 }
 
 const Page = async ({ params }: { params: { id: string } }) => {
-  console.log(process.env.OMDB_API_KEY);
   const movie = await getData(params.id);
 
   return (

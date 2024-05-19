@@ -2,7 +2,33 @@ import { Movie } from "@/components/columns";
 import MaxWidthWrapper from "@/components/MaxWidthWrapper";
 import React from "react";
 
-async function getData(id: string): Promise<Movie[]> {
+type OMDBMovieDetails = {
+  Title: string;
+  Year: string;
+  Rated: string;
+  Released: string;
+  Runtime: string;
+  Genre: string;
+  Director: string;
+  Writer: string;
+  Actors: string;
+  Plot: string;
+  Language: string;
+  Country: string;
+  Awards: string;
+  Poster: string;
+  Ratings: { Source: string; Value: string }[];
+  Metascore: string;
+  imdbRating: string;
+  imdbVotes: string;
+  BoxOffice: string;
+  Production: string;
+  Website: string;
+};
+
+type CombinedMovie = Movie & OMDBMovieDetails;
+
+async function getData(id: string): Promise<CombinedMovie> {
   const data = await fetch(
     `http://www.omdbapi.com/?apikey=${process.env.OMDB_API_KEY}&i=${id}`,
     {

@@ -25,6 +25,10 @@ import { useState } from "react";
 import { Input } from "./ui/input";
 import { useRouter } from "next/navigation";
 
+interface Original {
+  imdbId: string;
+}
+
 interface DataTableProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[];
   data: TData[];
@@ -91,7 +95,9 @@ export function DataTable<TData, TValue>({
                 <TableRow
                   key={row.id}
                   data-state={row.getIsSelected() && "selected"}
-                  onClick={() => router.push(`/movie/${row.original.imdbId}`)}
+                  onClick={() =>
+                    router.push(`/movie/${(row.original as Original).imdbId}`)
+                  }
                   className="cursor-pointer"
                 >
                   {row.getVisibleCells().map((cell) => (
